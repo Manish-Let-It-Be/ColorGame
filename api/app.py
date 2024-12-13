@@ -57,4 +57,4 @@ def scoreboard():
     return render_template('scoreboard.html', games_won=games_won, games_lost=games_lost, player_name=player_name)
 
 if __name__ == '__main__':
-    application.run(debug=True, host='0.0.0.0', port=8080)
+    application.run
