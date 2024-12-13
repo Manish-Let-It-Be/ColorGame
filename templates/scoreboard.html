@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+        <title>Color Game</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Scoreboard</h1>
+        <p>Number of games won: {{ games_won }}</p>
+        <p>Number of games lost: {{ games_lost }}</p>
+        <p>Player: {{ player_name }}</p>
+        <form action="/" method="get">
+            <button type="submit">Play Again</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Color Game</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    
+<body>
+    <div class="container">
+        <h1>Game Over</h1>
+        <p>{{ message }}</p>
+        <form action="/scoreboard" method="get">
+            <button type="submit">See Scoreboard</button>
+        </form>
+        <form action="/start_game" method="post">
+            <button type="submit">Play Again</button>
+        </form>
+        <form action="/" method="get">
+            <button type="submit">Exit</button>
+        </form>
+    </div>
+</body>
+</html>
