@@ -9,7 +9,7 @@ class ColorGame:
         self.player_name = ""
     
     def start_game(self):
-        self.player_name = input("Please enter your name for the scoreboard: ").strip()
+        self.player_name = input("Please enter your name: ").strip()
         while True:
             print("\n1> Start Game")
             print("2> Exit")
@@ -35,11 +35,11 @@ class ColorGame:
             
             if user_color not in VALID_COLORS:
                 print("Invalid color. Please enter a valid color.")
-                attempts -= 1  # Invalid attempt does not count
+                attempts -= 1 
                 continue
             
             if user_color == machine_color:
-                print(f"You won the game! 🎉\nNumber of attempts: {attempts}")
+                print(f"Congrats!! You won the game! 🎉\nNumber of attempts: {attempts}")
                 self.games_won += 1
                 break
             else:
@@ -77,7 +77,6 @@ class ColorGame:
         print(f"Number of games lost: {self.games_lost}")
 
 
-# Main program
 if __name__ == "__main__":
     print("Welcome to the Color Game!")
     game = ColorGame()
