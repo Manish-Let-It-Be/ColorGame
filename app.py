@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
+from waitress import serve
 import random
 
-app = Flask(__name__,static_folder='static', template_folder='templates')
+
+application = Flask(__name__,static_folder='static', template_folder='templates')
 
 colors = ["red", "green", "blue", "yellow", "orange", "purple"]
 machine_color = random.choice(colors)
@@ -11,11 +13,11 @@ games_won = 0
 games_lost = 0
 player_name = ""
 
-@app.route('/')
+@application.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/start_game', methods=['POST'])
+@application.route('/start_game', methods=['POST'])
 def start_game():
     global player_name, attempts, machine_color
     player_name = request.form['player_name']
@@ -23,11 +25,11 @@ def start_game():
     machine_color = random.choice(colors)
     return redirect(url_for('game'))
 
-@app.route('/game')
+@application.route('/game')
 def game():
     return render_template('game.html', attempts=attempts, max_attempts=max_attempts)
 
-@app.route('/guess', methods=['POST'])
+@application.route('/guess', methods=['POST'])
 def guess():
     global attempts, games_won, games_lost, machine_color
     user_color = request.form['color'].lower()
@@ -46,13 +48,13 @@ def guess():
         attempts_left = max_attempts - attempts
         return render_template('game.html', attempts=attempts, max_attempts=max_attempts, message=f"Your guess was wrong. Please try again. Number of attempts left: {attempts_left}.")
 
-@app.route('/options')
+@application.route('/options')
 def options():
     return render_template('options.html')
 
-@app.route('/scoreboard')
+@application.route('/scoreboard')
 def scoreboard():
     return render_template('scoreboard.html', games_won=games_won, games_lost=games_lost, player_name=player_name)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(application, host='0.0.0.0', port=8080)
