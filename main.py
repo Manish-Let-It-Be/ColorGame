@@ -39,7 +39,7 @@ class ColorGame:
                 continue
             
             if user_color == machine_color:
-                print(f"You won the game! 🎉\nNumber of attempts: {attempts}")
+                print(f"Congrats!! You won the game! 🎉\nNumber of attempts: {attempts}")
                 self.games_won += 1
                 break
             else:
@@ -77,7 +77,6 @@ class ColorGame:
         print(f"Number of games lost: {self.games_lost}")
 
 
-# Main program
 if __name__ == "__main__":
     print("Welcome to the Color Game!")
     game = ColorGame()
